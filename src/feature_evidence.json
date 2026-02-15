@@ -1,0 +1,108 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-single-page-link-in-bio-layout-that-presents-1-a-profile-header-name-short-tagline-optional-avatar-2-a-list-of-social-link-buttons-3-a-primary-booking-button-and-4-a-newsletter-signup-section-with-an-email-field-and-submit-button",
+      "featureTitle": "Create a single-page link-in-bio layout that presents: (1) a profile header (name, short tagline, optional avatar), (2) a list of social link buttons, (3) a primary “Booking” button, and (4) a newsletter signup section with an email field and submit button.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/BookingButton.tsx",
+        "frontend/src/components/NewsletterSignup.tsx",
+        "frontend/src/components/SocialLinksList.tsx",
+        "frontend/src/pages/LinkInBioPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-simple-developer-editable-configuration-for-the-page-content-profile-name-tagline-social-links-list-booking-url-and-optional-footer-text-that-can-be-changed-without-touching-multiple-components",
+      "featureTitle": "Add a simple, developer-editable configuration for the page content (profile name/tagline, social links list, booking URL, and optional footer text) that can be changed without touching multiple components.",
+      "files": [
+        "frontend/src/components/BookingButton.tsx",
+        "frontend/src/components/SocialLinksList.tsx",
+        "frontend/src/linkBioConfig.ts",
+        "frontend/src/pages/LinkInBioPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-newsletter-signup-submission-with-basic-client-side-validation-required-field-email-format-show-clear-success-and-error-states-inline-e-g-thanks-for-subscribing-or-a-validation-message",
+      "featureTitle": "Implement newsletter signup submission with basic client-side validation (required field + email format). Show clear success and error states inline (e.g., “Thanks for subscribing” or a validation message).",
+      "files": [
+        "frontend/src/components/NewsletterSignup.tsx",
+        "frontend/src/hooks/useNewsletterSignup.ts",
+        "frontend/src/lib/newsletterValidation.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-creative-coherent-visual-theme-for-the-link-in-bio-page-colors-typography-spacing-button-styles-and-apply-it-consistently-across-all-sections-avoid-a-blue-purple-default-palette",
+      "featureTitle": "Add a creative, coherent visual theme for the link-in-bio page (colors, typography, spacing, button styles) and apply it consistently across all sections. Avoid a blue/purple default palette.",
+      "files": [
+        "frontend/src/index.css",
+        "frontend/src/pages/LinkInBioPage.tsx",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-use-generated-static-images-for-a-subtle-page-background-and-a-default-avatar-and-render-them-from-frontend-static-assets-do-not-fetch-via-backend",
+      "featureTitle": "Use generated static images for a subtle page background and a default avatar, and render them from frontend static assets (do not fetch via backend).",
+      "files": [
+        "frontend/src/index.css",
+        "frontend/src/linkBioConfig.ts",
+        "frontend/src/pages/LinkInBioPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

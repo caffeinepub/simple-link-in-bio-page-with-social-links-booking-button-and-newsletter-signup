@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Build a simple link-in-bio single-page site featuring social links, a booking button, and a newsletter signup.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Soft abstract gradient background with subtle grain (linkbio-bg.dim_1600x900.png)\n- Minimal circular avatar illustration placeholder (avatar-placeholder.dim_512x512.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-single-page-link-in-bio-layout-that-presents-1-a-profile-header-name-short-tagline-optional-avatar-2-a-list-of-social-link-buttons-3-a-primary-booking-button-and-4-a-newsletter-signup-section-with-an-email-field-and-submit-button",
+      "title": "Create a single-page link-in-bio layout that presents: (1) a profile header (name, short tagline, optional avatar), (2) a list of social link buttons, (3) a primary “Booking” button, and (4) a newsletter signup section with an email field and submit button.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-simple-developer-editable-configuration-for-the-page-content-profile-name-tagline-social-links-list-booking-url-and-optional-footer-text-that-can-be-changed-without-touching-multiple-components",
+      "title": "Add a simple, developer-editable configuration for the page content (profile name/tagline, social links list, booking URL, and optional footer text) that can be changed without touching multiple components.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-newsletter-signup-submission-with-basic-client-side-validation-required-field-email-format-show-clear-success-and-error-states-inline-e-g-thanks-for-subscribing-or-a-validation-message",
+      "title": "Implement newsletter signup submission with basic client-side validation (required field + email format). Show clear success and error states inline (e.g., “Thanks for subscribing” or a validation message).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-creative-coherent-visual-theme-for-the-link-in-bio-page-colors-typography-spacing-button-styles-and-apply-it-consistently-across-all-sections-avoid-a-blue-purple-default-palette",
+      "title": "Add a creative, coherent visual theme for the link-in-bio page (colors, typography, spacing, button styles) and apply it consistently across all sections. Avoid a blue/purple default palette.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-use-generated-static-images-for-a-subtle-page-background-and-a-default-avatar-and-render-them-from-frontend-static-assets-do-not-fetch-via-backend",
+      "title": "Use generated static images for a subtle page background and a default avatar, and render them from frontend static assets (do not fetch via backend).",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create a simple link-in-bio page with social links, a booking button, and a newsletter signup.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Create backend storage for newsletter subscribers in the single Motoko actor, with an update method to add a subscriber email. Prevent obvious duplicates (case-insensitive compare) and store a created-at timestamp for each subscription.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Simple link-in-bio page with social links, booking button, and newsletter signup",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

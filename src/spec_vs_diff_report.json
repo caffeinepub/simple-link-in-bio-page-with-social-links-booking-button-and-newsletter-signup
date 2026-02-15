@@ -1,0 +1,73 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-15T05:01:26.453Z",
+  "summary": "Core single-page link-in-bio UI, centralized config, client-side newsletter validation, and backend subscriber storage were added. However, the backend newsletter method does not return a success/failure result (it traps), and the required generated images are only referenced by path but are not shown as added to static assets in the diff. Several extra capabilities (auth integration, subscriber querying/unsubscribe, attribution footer) were also added beyond the request.",
+  "missing_requirements": [
+    {
+      "id": "REQ-4",
+      "requirement": "Backend returns a success/failure result that the frontend can use to render states (rather than trapping).",
+      "reason": "The backend update method `joinNewsletter` returns `async ()` and uses `Runtime.trap(...)` for duplicate and error conditions, which is not a structured success/failure result for the frontend to consume.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "requirement": "Use the generated static images from frontend/public/assets/generated (background + default avatar) and ensure they are included as frontend static assets.",
+      "reason": "The page references `/assets/generated/linkbio-bg.dim_1600x900.png` and `/assets/generated/avatar-placeholder.dim_512x512.png`, but the diff summary does not show the actual image files being added under `frontend/public/assets/generated/`.",
+      "evidence": [
+        "frontend/src/pages/LinkInBioPage.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Internet Identity authentication/provider and actor recreation logic tied to identity.",
+      "reason": "BuildRequest did not ask for authentication; newsletter signup can be anonymous and no auth requirement was specified.",
+      "evidence": [
+        "frontend/src/hooks/useInternetIdentity.ts",
+        "frontend/src/main.tsx",
+        "frontend/src/hooks/useActor.ts"
+      ]
+    },
+    {
+      "description": "Backend methods to unsubscribe and to query subscriber status/details/list (isSubscribed, getAllSubscribers, getSubscriber, unsubscribe).",
+      "reason": "BuildRequest only required an update method to add a subscriber with de-duplication and timestamp storage; exposing subscriber listing/details and unsubscribe was not requested and may conflict with the non-goal of avoiding admin-like subscriber management beyond storage.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/hooks/useQueries.ts"
+      ]
+    },
+    {
+      "description": "Footer attribution/link to caffeine.ai with UTM parameters.",
+      "reason": "Footer text was requested as developer-configurable optional text, but an additional external attribution link was not requested.",
+      "evidence": [
+        "frontend/src/pages/LinkInBioPage.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.72,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/BookingButton.tsx",
+    "frontend/src/components/NewsletterSignup.tsx",
+    "frontend/src/components/SocialLinksList.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useNewsletterSignup.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/index.css",
+    "frontend/src/lib/newsletterValidation.ts",
+    "frontend/src/linkBioConfig.ts",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/LinkInBioPage.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

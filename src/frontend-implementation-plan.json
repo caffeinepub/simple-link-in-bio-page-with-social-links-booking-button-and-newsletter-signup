@@ -1,0 +1,157 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Single-page link-in-bio with booking and newsletter signup",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Build a single-page link-in-bio layout with profile header, social links, primary booking button, and newsletter signup section.",
+      "acceptanceCriteria": [
+        "The app renders as a single page with clearly separated sections for socials, booking, and newsletter signup.",
+        "Social links are displayed as a vertical list of buttons/tiles and open in a new tab.",
+        "A dedicated Booking button is visually primary and opens its configured URL in a new tab.",
+        "Newsletter section contains an email input and a submit button and is usable on mobile and desktop."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the single-page app shell and render the LinkInBioPage as the only view (no additional routes/pages) to satisfy the single-page requirement."
+        },
+        {
+          "path": "frontend/src/pages/LinkInBioPage.tsx",
+          "operation": "create",
+          "description": "Implement the link-in-bio page sections (profile header, socials list, primary booking button, newsletter signup section). Use shadcn-ui components (e.g., Button, Card, Input) for consistent UI composition—verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/SocialLinksList.tsx",
+          "operation": "create",
+          "description": "Create a focused component that renders the configured social links as a vertical list of button/tiles that open in a new tab. Use shadcn-ui Button (or equivalent) for the tiles—verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/BookingButton.tsx",
+          "operation": "create",
+          "description": "Create a dedicated visually-primary booking button component that opens the configured booking URL in a new tab. Use shadcn-ui Button styling/composition—verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/NewsletterSignup.tsx",
+          "operation": "create",
+          "description": "Create the newsletter signup UI section (email input + submit button) and integrate it into the page layout. Use shadcn-ui Input and Button for form controls—verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Add a single developer-editable configuration module for profile text, social links, booking URL, and optional footer text.",
+      "acceptanceCriteria": [
+        "There is a single obvious place (e.g., one config object/module) where profile text, social links, and booking URL can be edited.",
+        "Changing the configuration updates the rendered page without additional code changes elsewhere."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/linkBioConfig.ts",
+          "operation": "create",
+          "description": "Create a single exported config object/module containing profile name/tagline, optional avatar override, social links array, booking URL, and optional footer text; keep this as the single source of editable content."
+        },
+        {
+          "path": "frontend/src/pages/LinkInBioPage.tsx",
+          "operation": "modify",
+          "description": "Wire LinkInBioPage to read all page content (header, socials, booking, footer) exclusively from frontend/src/linkBioConfig.ts so content changes only require editing the config module."
+        },
+        {
+          "path": "frontend/src/components/SocialLinksList.tsx",
+          "operation": "modify",
+          "description": "Accept the social links array as props (sourced from frontend/src/linkBioConfig.ts) and render it without hardcoded values to keep configuration centralized."
+        },
+        {
+          "path": "frontend/src/components/BookingButton.tsx",
+          "operation": "modify",
+          "description": "Accept booking URL (and optional label) as props (sourced from frontend/src/linkBioConfig.ts) to keep configuration centralized."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Implement newsletter signup submission with client-side validation and inline success/error states, calling the backend capability to store subscriptions.",
+      "acceptanceCriteria": [
+        "Submitting an empty email shows an inline validation error and does not send a request.",
+        "Submitting an invalid email format shows an inline validation error and does not send a request.",
+        "Submitting a valid email shows a success state after the backend confirms storage.",
+        "If the backend call fails, the UI shows a non-technical error message and allows retry."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/lib/newsletterValidation.ts",
+          "operation": "create",
+          "description": "Add simple client-side validation helpers (required + email format) that return user-friendly messages; keep logic reusable and testable."
+        },
+        {
+          "path": "frontend/src/lib/backendClient.ts",
+          "operation": "create",
+          "description": "Create a small frontend wrapper that exposes the backend newsletter-join call using the existing core-infrastructure backend connection setup (no backend changes in this plan)."
+        },
+        {
+          "path": "frontend/src/hooks/useNewsletterSignup.ts",
+          "operation": "create",
+          "description": "Create a hook that manages newsletter submission state (idle/submitting/success/error), invokes the backend join call, and returns state + submit handler to the UI."
+        },
+        {
+          "path": "frontend/src/components/NewsletterSignup.tsx",
+          "operation": "modify",
+          "description": "Integrate validation (required + email format) and wire submit to the useNewsletterSignup hook; show inline validation errors, inline success message on confirmed completion, and a non-technical retryable error state on failure. Use shadcn-ui Input/Button (and optional Alert) for consistent inline states—verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Apply a coherent responsive visual theme (non-blue/non-purple primary palette) across header, buttons, and form controls.",
+      "acceptanceCriteria": [
+        "The UI has a consistent theme across header, buttons, and form controls (typography, spacing, radii, shadows).",
+        "Theme uses a non-blue/non-purple primary palette (e.g., warm neutrals with a single accent).",
+        "Layout is responsive and remains readable and attractive on small screens."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Add global Tailwind/shadcn token variables and base styles that establish a warm neutral theme with a single non-blue/non-purple accent; ensure typography/spacing/radii/shadows are consistent across the page."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Adjust theme extensions if needed to support the chosen non-blue/non-purple palette and consistent container/spacing behavior (keeping existing shadcn token approach intact)."
+        },
+        {
+          "path": "frontend/src/pages/LinkInBioPage.tsx",
+          "operation": "modify",
+          "description": "Apply responsive layout classes (max width, vertical spacing, section separation) and consistent button/input styling across all sections using composed shadcn-ui components—verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Use the generated static background and default avatar images from frontend public assets (no backend fetching).",
+      "acceptanceCriteria": [
+        "The page uses the generated background image and default avatar image from frontend/public/assets/generated.",
+        "Images load without backend calls and appear correctly in production build."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/LinkInBioPage.tsx",
+          "operation": "modify",
+          "description": "Render the generated images as static assets: use frontend/public/assets/generated/linkbio-bg.dim_1600x900.png for a subtle page background and frontend/public/assets/generated/avatar-placeholder.dim_512x512.png as the default avatar when no avatar is configured."
+        },
+        {
+          "path": "frontend/src/linkBioConfig.ts",
+          "operation": "modify",
+          "description": "Include an optional config field to override the avatar while defaulting to the generated asset at frontend/public/assets/generated/avatar-placeholder.dim_512x512.png."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Ensure global styling supports the background treatment (e.g., background sizing/positioning) while keeping the image source as the static asset at frontend/public/assets/generated/linkbio-bg.dim_1600x900.png."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "backend/main.mo": "Implements newsletter subscription storage with add, remove, lookup, and retrieval of all subscribers using maps and sets.",
+  "feature_evidence.json": "Defines feature evidence entries mapping features to related frontend files and components.",
+  "frontend-file-summaries.txt": "Contains short predefined summaries for key frontend source files.",
+  "frontend/index.css": "Defines global Tailwind-based styles and a custom OKLCH color theme with light and dark mode variables.",
+  "frontend/index.html": "HTML entry point that loads the React app via main.tsx.",
+  "frontend/src/App.tsx": "Renders the LinkInBioPage component as the root application view.",
+  "frontend/src/components/BookingButton.tsx": "Booking button component rendering a styled link with a calendar icon.",
+  "frontend/src/components/NewsletterSignup.tsx": "Newsletter signup form with validation, backend submission, and inline success/error UI states.",
+  "frontend/src/components/SocialLinksList.tsx": "Renders a vertical list of social link buttons with icons opening in new tabs.",
+  "frontend/src/hooks/useActor.ts": "Creates and manages a backend actor based on Internet Identity authentication, refreshing dependent queries on change.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides context and hooks to manage Internet Identity login, stored identities, and related state.",
+  "frontend/src/hooks/useNewsletterSignup.ts": "Custom hook handling newsletter submission, status tracking, and error mapping from backend responses.",
+  "frontend/src/hooks/useQueries.ts": "React Query wrappers for checking subscription status and retrieving all subscribers via the backend.",
+  "frontend/src/index.css": "Sets Tailwind layers and defines light/dark theme CSS variables plus custom utility animations.",
+  "frontend/src/lib/newsletterValidation.ts": "Provides a simple email validation function returning validity and error messages.",
+  "frontend/src/linkBioConfig.ts": "Exports a configurable link‑in‑bio profile, social links, booking info, and footer text.",
+  "frontend/src/main.tsx": "Bootstraps the React app with React Query and the InternetIdentityProvider.",
+  "frontend/src/pages/LinkInBioPage.tsx": "Renders the link‑in‑bio page including profile header, social links, booking button, newsletter signup, and footer.",
+  "frontend/tailwind.config.js": "Configures Tailwind with custom colors, fonts, radii, animations, and plugins.",
+  "project_state.json": "Describes the project state, existing features, pending requests, and required assets."
+}

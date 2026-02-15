@@ -1,0 +1,13 @@
+{
+  "frontend/src/App.tsx": "Main app component that renders the single-page LinkInBioPage without routing.",
+  "frontend/src/linkBioConfig.ts": "Centralized configuration module containing profile info, social links, booking URL, and footer text that can be easily edited.",
+  "frontend/src/pages/LinkInBioPage.tsx": "Main link-in-bio page component that displays profile header with avatar, social links list, booking button, newsletter signup section, and footer with attribution.",
+  "frontend/src/components/SocialLinksList.tsx": "Renders a vertical list of social link buttons with icons that open in new tabs.",
+  "frontend/src/components/BookingButton.tsx": "Displays a prominent primary booking button with calendar icon that opens the booking URL in a new tab.",
+  "frontend/src/components/NewsletterSignup.tsx": "Newsletter signup form component with email input, validation, submission handling, and inline success/error states.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for fetching subscriber data from the backend (isSubscribed and getAllSubscribers queries).",
+  "frontend/src/hooks/useNewsletterSignup.ts": "Custom hook that manages newsletter submission state and calls the backend joinNewsletter method with error handling.",
+  "frontend/src/lib/newsletterValidation.ts": "Client-side email validation helper that checks for required field and valid email format.",
+  "frontend/src/index.css": "Global styles with warm neutral OKLCH color palette featuring terracotta accent, custom animations, and both light and dark mode support.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with Inter font family, custom shadows, and design tokens matching the warm neutral theme."
+}

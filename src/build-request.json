@@ -1,0 +1,138 @@
+{
+  "kind": "build_request",
+  "title": "Simple link-in-bio page with social links, booking button, and newsletter signup",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a single-page link-in-bio layout that presents: (1) a profile header (name, short tagline, optional avatar), (2) a list of social link buttons, (3) a primary “Booking” button, and (4) a newsletter signup section with an email field and submit button.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "i want to creat a simple link-in-bio page with socials , a booking button , and newsletter singup"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The app renders as a single page with clearly separated sections for socials, booking, and newsletter signup.",
+        "Social links are displayed as a vertical list of buttons/tiles and open in a new tab.",
+        "A dedicated Booking button is visually primary and opens its configured URL in a new tab.",
+        "Newsletter section contains an email input and a submit button and is usable on mobile and desktop."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Add a simple, developer-editable configuration for the page content (profile name/tagline, social links list, booking URL, and optional footer text) that can be changed without touching multiple components.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "simple link-in-bio page with socials , a booking button"
+        ]
+      },
+      "acceptanceCriteria": [
+        "There is a single obvious place (e.g., one config object/module) where profile text, social links, and booking URL can be edited.",
+        "Changing the configuration updates the rendered page without additional code changes elsewhere."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Implement newsletter signup submission with basic client-side validation (required field + email format). Show clear success and error states inline (e.g., “Thanks for subscribing” or a validation message).",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "and newsletter singup"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Submitting an empty email shows an inline validation error and does not send a request.",
+        "Submitting an invalid email format shows an inline validation error and does not send a request.",
+        "Submitting a valid email shows a success state after the backend confirms storage.",
+        "If the backend call fails, the UI shows a non-technical error message and allows retry."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Create backend storage for newsletter subscribers in the single Motoko actor, with an update method to add a subscriber email. Prevent obvious duplicates (case-insensitive compare) and store a created-at timestamp for each subscription.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "newsletter singup"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend exposes an update method to add a subscriber email.",
+        "Duplicate signups for the same email (case-insensitive) do not create multiple records.",
+        "Each stored subscriber record includes the email and a created-at timestamp.",
+        "Backend returns a success/failure result that the frontend can use to render states."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add a creative, coherent visual theme for the link-in-bio page (colors, typography, spacing, button styles) and apply it consistently across all sections. Avoid a blue/purple default palette.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The UI has a consistent theme across header, buttons, and form controls (typography, spacing, radii, shadows).",
+        "Theme uses a non-blue/non-purple primary palette (e.g., warm neutrals with a single accent).",
+        "Layout is responsive and remains readable and attractive on small screens."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Use generated static images for a subtle page background and a default avatar, and render them from frontend static assets (do not fetch via backend).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The page uses the generated background image and default avatar image from frontend/public/assets/generated.",
+        "Images load without backend calls and appear correctly in production build."
+      ]
+    }
+  ],
+  "constraints": [
+    "Backend must remain a single Motoko actor (no additional backend services).",
+    "Do not edit files under frontend/src/components/ui (compose existing UI components instead).",
+    "Do not edit immutable frontend hook entrypoints; integrate via new components/modules as needed."
+  ],
+  "nonGoals": [
+    "No multi-page site or blog functionality.",
+    "No third-party email marketing integration (e.g., Mailchimp/SendGrid) or sending emails.",
+    "No advanced admin dashboard for managing subscribers (beyond storing subscriptions).",
+    "No real-time features (chat, presence, WebSockets)."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Soft abstract gradient background with subtle grain (linkbio-bg.dim_1600x900.png)",
+      "Minimal circular avatar illustration placeholder (avatar-placeholder.dim_512x512.png)"
+    ],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}
